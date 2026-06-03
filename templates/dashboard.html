@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Disaster Commander - Emergency Response System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="title">🚨 AI Disaster Commander</h1>
+                <p class="subtitle">Advanced AI-Powered Disaster Detection & Alert System</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Control Panel -->
+            <section class="control-panel">
+                <div class="control-card">
+                    <h2>Monitoring Control</h2>
+                    <div class="button-group">
+                        <button id="startBtn" class="btn btn-primary" onclick="startMonitoring()">
+                            <span class="icon">▶️</span> Start Monitoring
+                        </button>
+                        <button id="stopBtn" class="btn btn-danger" onclick="stopMonitoring()" disabled>
+                            <span class="icon">⏹️</span> Stop Monitoring
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Manual Detection -->
+                <div class="control-card">
+                    <h2>Manual Disaster Check</h2>
+                    <div class="form-group">
+                        <label>Location:</label>
+                        <input type="text" id="location" placeholder="Enter location or 'auto'" value="auto">
+                    </div>
+                    <button class="btn btn-secondary" onclick="detectDisaster()">
+                        <span class="icon">🔍</span> Analyze Now
+                    </button>
+                </div>
+            </section>
+
+            <!-- Status Dashboard -->
+            <section class="status-dashboard">
+                <div class="status-card">
+                    <h3>System Status</h3>
+                    <div class="status-info">
+                        <div class="status-item">
+                            <span class="label">Monitoring:</span>
+                            <span id="monitoringStatus" class="value status-inactive">OFF</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="label">Risk Level:</span>
+                            <span id="riskLevel" class="value risk-low">LOW</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="label">Last Check:</span>
+                            <span id="lastCheck" class="value">Never</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Risk Indicator -->
+                <div class="risk-indicator">
+                    <h3>Risk Assessment</h3>
+                    <div class="risk-gauge">
+                        <div id="riskGauge" class="gauge-fill" style="width: 0%"></div>
+                    </div>
+                    <p id="riskText" class="risk-text">No threats detected</p>
+                </div>
+
+                <!-- Real-time Alerts -->
+                <div class="alerts-container">
+                    <h3>Active Alerts <span id="alertCount" class="badge">0</span></h3>
+                    <div id="alertsList" class="alerts-list">
+                        <p class="no-alerts">No active alerts</p>
+                    </div>
+                    <button class="btn btn-small" onclick="clearAlerts()">Clear Alerts</button>
+                </div>
+            </section>
+
+            <!-- Environmental Data -->
+            <section class="data-section">
+                <h2>Environmental Parameters</h2>
+                <div class="data-grid">
+                    <div class="data-item">
+                        <label>Temperature</label>
+                        <input type="number" id="temp" placeholder="°C" value="25">
+                    </div>
+                    <div class="data-item">
+                        <label>Humidity</label>
+                        <input type="number" id="humidity" placeholder="%" value="60">
+                    </div>
+                    <div class="data-item">
+                        <label>Air Pressure</label>
+                        <input type="number" id="pressure" placeholder="hPa" value="1013">
+                    </div>
+                    <div class="data-item">
+                        <label>Wind Speed</label>
+                        <input type="number" id="windSpeed" placeholder="km/h" value="0">
+                    </div>
+                    <div class="data-item">
+                        <label>Precipitation</label>
+                        <input type="number" id="precipitation" placeholder="mm" value="0">
+                    </div>
+                    <div class="data-item">
+                        <label>Seismic Activity</label>
+                        <input type="number" id="seismic" placeholder="Magnitude" value="0">
+                    </div>
+                    <div class="data-item">
+                        <label>Water Level</label>
+                        <input type="number" id="waterLevel" placeholder="m" value="0">
+                    </div>
+                    <div class="data-item">
+                        <label>Air Quality</label>
+                        <input type="number" id="airQuality" placeholder="AQI" value="50">
+                    </div>
+                </div>
+                <button class="btn btn-secondary" onclick="detectDisasterWithData()">
+                    <span class="icon">📊</span> Analyze with Custom Data
+                </button>
+            </section>
+
+            <!-- AI Reasoning Panel -->
+            <section class="reasoning-section">
+                <h2>AI Analysis & Reasoning</h2>
+                <div id="reasoningPanel" class="reasoning-panel">
+                    <p class="placeholder">Run analysis to see AI reasoning process</p>
+                </div>
+            </section>
+
+            <!-- Detection History -->
+            <section class="history-section">
+                <h2>Detection History</h2>
+                <div id="historyList" class="history-list">
+                    <p class="placeholder">No detection history yet</p>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2026 AI Disaster Commander | Advanced Emergency Response System</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
